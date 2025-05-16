@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 24 100% 97%;
+  --foreground: 220 25% 10%;
+  --muted: 30 30% 96%;
+  --muted-foreground: 215 16% 47%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 25% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 25% 10%;
+  --border: 20 20% 90%;
+  --input: 20 20% 90%;
+  --primary: 16 100% 60%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222 47% 11%;
+  --accent: 16 80% 55%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 16 80% 60%;
+  --radius: 1rem;
+
+  /* Brand colors */
+  --nike: 0 100% 57%;
+  --apple: 0 0% 33%;
+  --wendys: 3 86% 50%;
+  --southwest: 226 57% 45%;
+  --accent-yellow: 38 92% 50%;
+  --dark: 215 28% 17%;
+  --dark-medium: 220 9% 46%;
+  --dark-light: 220 9% 65%;
+
+  /* Chart colors */
+  --chart-1: var(--primary);
+  --chart-2: var(--accent-yellow);
+  --chart-3: var(--nike);
+  --chart-4: var(--wendys);
+  --chart-5: var(--southwest);
+}
+
+.dark {
+  --background: 222 47% 5%;
+  --foreground: 210 40% 98%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --popover: 222 47% 5%;
+  --popover-foreground: 210 40% 98%;
+  --card: 222 47% 7%;
+  --card-foreground: 210 40% 98%;
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --primary: 222 89% 55%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 244 75% 60%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 50.6%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 224 76% 48%;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    background: linear-gradient(120deg, #fdf2e7 0%, #fff8f3 100%);
+    font-family: 'Inter', sans-serif;
+    @apply antialiased text-foreground;
+    position: relative;
+  }
+  
+  /* Using default cursor */
+  
+  .rainbow-text {
+    background-image: linear-gradient(
+      90deg,
+      #FF5555 0%,
+      #FF9C55 14.29%,
+      #FFD255 28.57%,
+      #AFFF55 42.86%,
+      #55FFAA 57.14%,
+      #55C4FF 71.43%,
+      #A455FF 85.71%,
+      #FF55D4 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: rainbow 8s linear infinite;
+  }
+  
+  @keyframes rainbow { 
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+  
+  /* UIverse Button */
+  .uiverse-button {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    font-size: 1.125rem;
+    background-color: rgb(249 250 251);
+    backdrop-filter: blur(12px);
+    font-weight: 600;
+    isolation: auto;
+    border-color: rgb(249 250 251);
+    position: relative;
+    z-index: 10;
+    padding: 0.5rem 1rem;
+    overflow: hidden;
+    border-width: 2px;
+    border-radius: 9999px;
+  }
+  
+  .uiverse-button::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transition-property: all;
+    transition-duration: 700ms;
+    left: -100%;
+    border-radius: 9999px;
+    background-color: #FF7A00;
+    z-index: -10;
+    aspect-ratio: 1/1;
+  }
+  
+  .uiverse-button:hover::before {
+    width: 100%;
+    left: 0;
+    scale: 1.5;
+    transition-duration: 700ms;
+  }
+  
+  .uiverse-button:hover {
+    color: rgb(249 250 251);
+  }
+  
+  .uiverse-button svg {
+    width: 2rem;
+    height: 2rem;
+    justify-content: flex-end;
+    rotate: 45deg;
+    transition-property: all;
+    transition-timing-function: linear;
+    transition-duration: 300ms;
+    border-radius: 9999px;
+    border-width: 1px;
+    border-color: rgb(55 65 81);
+    padding: 0.5rem;
+  }
+  
+  .uiverse-button:hover svg {
+    rotate: 90deg;
+    background-color: rgb(249 250 251);
+    border-style: none;
+  }
+  
+  .uiverse-button svg path {
+    fill: #111827;
+  }
+  
+  /* Content Type Button Styles */
+  .content-type-button {
+    position: relative;
+    margin: 0;
+    padding: 17px 35px;
+    outline: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #fff;
+    border: 1px solid rgba(22, 76, 167, 0.6);
+    border-radius: 10px;
+    color: #1d89ff;
+    font-weight: 400;
+    font-family: inherit;
+    z-index: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
+  
+  .content-type-button.social-media {
+    border-color: rgba(156, 39, 176, 0.6);
+    color: #9c27b0;
+  }
+  
+  .content-type-button.product {
+    border-color: rgba(3, 169, 244, 0.6);
+    color: #03a9f4;
+  }
+  
+  .content-type-button.email {
+    border-color: rgba(255, 152, 0, 0.6);
+    color: #ff9800;
+  }
+  
+  .content-type-button.blog-post {
+    border-color: rgba(76, 175, 80, 0.6);
+    color: #4caf50;
+  }
+  
+  .content-type-button span {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+  }
+  
+  .content-type-button.social-media span {
+    color: #9c27b0;
+  }
+  
+  .content-type-button.product span {
+    color: #03a9f4;
+  }
+  
+  .content-type-button.email span {
+    color: #ff9800;
+  }
+  
+  .content-type-button.blog-post span {
+    color: #4caf50;
+  }
+  
+  .content-type-button:hover {
+    animation: rotate624 0.7s ease-in-out both;
+  }
+  
+  .content-type-button:hover span {
+    animation: storm1261 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+  }
+  
+  @keyframes rotate624 {
+    0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  
+    25% {
+      transform: rotate(3deg) translate3d(0, 0, 0);
+    }
+  
+    50% {
+      transform: rotate(-3deg) translate3d(0, 0, 0);
+    }
+  
+    75% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+  
+    100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes storm1261 {
+    0% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+  
+    25% {
+      transform: translate3d(4px, 0, 0) translateZ(0);
+    }
+  
+    50% {
+      transform: translate3d(-3px, 0, 0) translateZ(0);
+    }
+  
+    75% {
+      transform: translate3d(2px, 0, 0) translateZ(0);
+    }
+  
+    100% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+  }
+  
+  .content-type-button.btn-shine {
+    border: 1px solid;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .content-type-button.btn-shine span {
+    z-index: 20;
+  }
+  
+  .content-type-button.btn-shine:after {
+    background: #38ef7d;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: 0.4;
+    position: absolute;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    z-index: -10;
+  }
+  
+  .content-type-button.social-media.btn-shine:after {
+    background: #e040fb;
+  }
+  
+  .content-type-button.product.btn-shine:after {
+    background: #29b6f6;
+  }
+  
+  .content-type-button.email.btn-shine:after {
+    background: #ffb74d;
+  }
+  
+  .content-type-button.blog-post.btn-shine:after {
+    background: #66bb6a;
+  }
+  
+  .content-type-button.btn-shine:hover:after {
+    left: 120%;
+    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='pattern' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='50' cy='50' r='3' fill='%23ff8042' fill-opacity='0.05'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23pattern)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-4xl md:text-6xl font-extrabold;
+    background: linear-gradient(to right, hsl(20 90% 20%), hsl(var(--primary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+  }
+}
+
+/* Brand-specific color classes */
+.text-nike {
+  color: hsl(var(--nike));
+}
+.bg-nike {
+  background-color: hsl(var(--nike));
+}
+.border-nike {
+  border-color: hsl(var(--nike));
+}
+.bg-nike-5 {
+  background-color: hsl(var(--nike) / 0.05);
+}
+
+.text-apple {
+  color: hsl(var(--apple));
+}
+.bg-apple {
+  background-color: hsl(var(--apple));
+}
+.border-apple {
+  border-color: hsl(var(--apple));
+}
+.bg-apple-5 {
+  background-color: hsl(var(--apple) / 0.05);
+}
+
+.text-wendys {
+  color: hsl(var(--wendys));
+}
+.bg-wendys {
+  background-color: hsl(var(--wendys));
+}
+.border-wendys {
+  border-color: hsl(var(--wendys));
+}
+.bg-wendys-5 {
+  background-color: hsl(var(--wendys) / 0.05);
+}
+
+.text-southwest {
+  color: hsl(var(--southwest));
+}
+.bg-southwest {
+  background-color: hsl(var(--southwest));
+}
+.border-southwest {
+  border-color: hsl(var(--southwest));
+}
+.bg-southwest-5 {
+  background-color: hsl(var(--southwest) / 0.05);
+}
+
+.text-accent-yellow {
+  color: hsl(var(--accent-yellow));
+}
+.bg-accent-yellow {
+  background-color: hsl(var(--accent-yellow));
+}
+
+.text-dark {
+  color: hsl(var(--dark));
+}
+.text-dark-medium {
+  color: hsl(var(--dark-medium));
+}
+.text-dark-light {
+  color: hsl(var(--dark-light));
+}
